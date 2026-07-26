@@ -8,10 +8,10 @@ import HoodieModel from './HoodieModel'
 export default function Scene({ scrollY = 0 }: { scrollY?: number }) {
   return (
     <Canvas
-      camera={{ position: [0, 0, 5], fov: 50 }}
-      gl={{ antialias: true, alpha: true }}
-      style={{ pointerEvents: 'none' }}
-    >
+  camera={{ position: [0, 0, 5], fov: 50 }}
+  gl={{ antialias: true, alpha: true }}
+  style={{ pointerEvents: 'none', width: '100%', height: '100%' }}
+>
       <ambientLight intensity={1.5} />
       <pointLight position={[5, 5, 5]} intensity={2} />
       <pointLight position={[-5, 3, 2]} intensity={1} color="#ffffff" />

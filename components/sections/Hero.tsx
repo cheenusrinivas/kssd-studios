@@ -12,30 +12,22 @@ export default function Hero() {
   const [navVisible, setNavVisible] = useState(false)
   const [hasScrolled, setHasScrolled] = useState(false)
 
-  useEffect(() => {
-    // KSSD text fades in after 1.5 seconds
-    const timer = setTimeout(() => setKssdVisible(true), 800)   
-    return () => clearTimeout(timer)
-  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
       const y = window.scrollY
       setScrollY(y)
-
+  
       if (y < 50) {
-        // Back at top — show KSSD normally only if user has scrolled before
         if (hasScrolled) {
           setKssdVisible(true)
         }
         setNavVisible(false)
       } else if (y >= 50 && y < 350) {
-        // Mid scroll — KSSD visible (dramatic rise on first time)
         setHasScrolled(true)
         setKssdVisible(true)
         setNavVisible(false)
       } else if (y >= 350) {
-        // Deep scroll — KSSD gone, navbar appears
         setHasScrolled(true)
         setKssdVisible(false)
         setNavVisible(true)

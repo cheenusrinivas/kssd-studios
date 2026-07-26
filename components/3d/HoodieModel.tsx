@@ -36,6 +36,7 @@ export default function HoodieModel({ scrollY = 0 }: { scrollY?: number }) {
     if (!groupRef.current) return
     groupRef.current.rotation.y += 0.008
     const scrollProgress = Math.min(scrollY / 600, 1)
+    groupRef.current.position.x = 0
     groupRef.current.position.y = 2.5 - scrollProgress * 6
     const scale = Math.max(0, 1 - scrollProgress * 1.5)
     groupRef.current.scale.setScalar(scale)
