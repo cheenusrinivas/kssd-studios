@@ -7,57 +7,35 @@ export default function Lookbook() {
     ]
   
     return (
-      <section id="lookbook" style={{ background: '#000', padding: '160px 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
+      <section id="lookbook" className="py-24 md:py-40 bg-black">
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
   
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '60px' }}>
+          {/* Header */}
+          <div className="flex justify-between items-end mb-10 md:mb-16">
             <div>
-              <p style={{ fontSize: '11px', letterSpacing: '0.5em', color: '#444', textTransform: 'uppercase', marginBottom: '12px' }}>
-                Visual Edit
-              </p>
-              <h2 style={{ fontSize: '48px', fontWeight: '900', color: '#fff', letterSpacing: '-1px' }}>
-                Lookbook
-              </h2>
+              <p className="text-[10px] tracking-[0.5em] text-gray-600 uppercase mb-3">Visual Edit</p>
+              <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">Lookbook</h2>
             </div>
-            <p style={{ fontSize: '11px', color: '#444', letterSpacing: '0.3em', textTransform: 'uppercase' }}>
-              SS26
-            </p>
+            <p className="text-[10px] text-gray-600 tracking-widest uppercase hidden md:block">SS26</p>
           </div>
   
           {/* Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px', background: '#111' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-900">
             {items.map((item, i) => (
               <div
                 key={item.id}
-                style={{
-                  background: '#0d0d0d',
-                  aspectRatio: i === 0 ? '4/5' : i === 1 ? '4/5' : '16/9',
-                  gridColumn: i >= 2 ? 'span 1' : 'span 1',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  display: 'flex',
-                  alignItems: 'flex-end',
-                  padding: '28px',
-                }}
+                className="relative bg-zinc-950 overflow-hidden flex items-end p-6 md:p-8"
+                style={{ aspectRatio: i < 2 ? '4/5' : '16/9' }}
               >
-                {/* Placeholder background */}
-                <div style={{
-                  position: 'absolute', inset: 0,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <span style={{ fontSize: '100px', fontWeight: '900', color: '#151515', letterSpacing: '4px' }}>
-                    KS
-                  </span>
+                {/* Placeholder */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-7xl md:text-9xl font-black text-zinc-900 tracking-widest">KS</span>
                 </div>
   
                 {/* Label */}
-                <div style={{ position: 'relative', zIndex: 1 }}>
-                  <p style={{ fontSize: '12px', color: '#fff', fontWeight: '600', letterSpacing: '0.1em', marginBottom: '4px' }}>
-                    {item.label}
-                  </p>
-                  <p style={{ fontSize: '11px', color: '#555', letterSpacing: '0.05em' }}>
-                    {item.sub}
-                  </p>
+                <div className="relative z-10">
+                  <p className="text-xs md:text-sm text-white font-semibold tracking-wide mb-1">{item.label}</p>
+                  <p className="text-[11px] text-gray-600 tracking-wide">{item.sub}</p>
                 </div>
               </div>
             ))}
@@ -66,4 +44,3 @@ export default function Lookbook() {
       </section>
     )
   }
-  

@@ -20,42 +20,31 @@ export default function Products() {
   const filtered = active === 'ALL' ? products : products.filter((p) => p.category === active)
 
   return (
-    <section id="shop" style={{ padding: '120px 0', background: '#0a0a0a' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 48px' }}>
+    <section id="shop" className="py-24 md:py-32 bg-black">
+      <div className="max-w-6xl mx-auto px-6 md:px-12">
 
         {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '60px' }}>
+        <div className="flex justify-between items-end mb-12 md:mb-16">
           <div>
-            <p style={{ fontSize: '11px', letterSpacing: '0.4em', color: '#444', textTransform: 'uppercase', marginBottom: '12px' }}>
-              SS26 Collection
-            </p>
-            <h2 style={{ fontSize: '48px', fontWeight: '900', color: '#fff', letterSpacing: '-1px' }}>
-              The Drop
-            </h2>
+            <p className="text-[10px] tracking-[0.5em] text-gray-600 uppercase mb-3">SS26 Collection</p>
+            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">The Drop</h2>
           </div>
-          <p style={{ fontSize: '11px', color: '#444', letterSpacing: '0.3em', textTransform: 'uppercase' }}>
+          <p className="text-[10px] text-gray-600 tracking-widest uppercase hidden md:block">
             {filtered.length} pieces
           </p>
         </div>
 
         {/* Filters */}
-        <div style={{ display: 'flex', gap: '32px', marginBottom: '48px', borderBottom: '1px solid #1a1a1a', paddingBottom: '24px' }}>
+        <div className="flex gap-6 md:gap-8 mb-10 border-b border-zinc-900 pb-5 overflow-x-auto">
           {filters.map((f) => (
             <button
               key={f}
               onClick={() => setActive(f)}
-              style={{
-                fontSize: '11px',
-                letterSpacing: '0.3em',
-                textTransform: 'uppercase',
-                color: active === f ? '#fff' : '#555',
-                background: 'none',
-                border: 'none',
-                borderBottom: active === f ? '1px solid #fff' : '1px solid transparent',
-                paddingBottom: '4px',
-                cursor: 'pointer',
-                transition: 'all 0.3s',
-              }}
+              className={`text-[11px] tracking-[0.3em] uppercase whitespace-nowrap transition-all duration-300 pb-1 border-b ${
+                active === f
+                  ? 'text-white border-white'
+                  : 'text-gray-600 border-transparent hover:text-gray-300'
+              }`}
             >
               {f}
             </button>
@@ -63,53 +52,44 @@ export default function Products() {
         </div>
 
         {/* Product Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px', background: '#1a1a1a' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-zinc-900">
           {filtered.map((product) => (
             <div
               key={product.id}
-              style={{ background: '#0a0a0a', cursor: 'pointer', position: 'relative' }}
+              className="relative bg-black cursor-pointer group"
               onMouseEnter={() => setHoveredId(product.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
               {/* Image area */}
-              <div style={{ position: 'relative', aspectRatio: '3/4', background: '#111', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{ fontSize: '80px', fontWeight: '900', color: '#1a1a1a', letterSpacing: '8px' }}>KS</span>
+              <div className="relative bg-zinc-950 overflow-hidden flex items-center justify-center" style={{ aspectRatio: '3/4' }}>
+                <span className="text-[80px] font-black text-zinc-900 tracking-widest">KS</span>
 
                 {product.tag && (
-                  <div style={{ position: 'absolute', top: '16px', left: '16px' }}>
-                    <span style={{ fontSize: '10px', letterSpacing: '0.3em', color: '#000', background: '#fff', padding: '4px 10px', textTransform: 'uppercase' }}>
+                  <div className="absolute top-4 left-4">
+                    <span className="text-[10px] tracking-[0.3em] text-black bg-white px-3 py-1 uppercase">
                       {product.tag}
                     </span>
                   </div>
                 )}
 
                 {/* Hover overlay */}
-                <div style={{
-                  position: 'absolute', inset: 0,
-                  background: 'rgba(0,0,0,0.6)',
-                  display: 'flex', alignItems: 'flex-end', padding: '24px',
-                  opacity: hoveredId === product.id ? 1 : 0,
-                  transition: 'opacity 0.3s',
-                }}>
-                  <button style={{
-                    width: '100%', border: '1px solid #fff', color: '#fff',
-                    background: 'none', fontSize: '11px', letterSpacing: '0.3em',
-                    textTransform: 'uppercase', padding: '12px',
-                    cursor: 'pointer', transition: 'all 0.3s',
-                  }}>
+                <div className={`absolute inset-0 bg-black/60 flex items-end p-5 md:p-6 transition-opacity duration-300 ${
+                  hoveredId === product.id ? 'opacity-100' : 'opacity-0'
+                }`}>
+                  <button className="w-full border border-white text-white text-[11px] tracking-[0.3em] uppercase py-3 hover:bg-white hover:text-black transition-colors duration-300">
                     Add to Cart
                   </button>
                 </div>
               </div>
 
               {/* Info */}
-              <div style={{ padding: '20px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <div className="p-4 md:p-5">
+                <div className="flex justify-between items-start">
                   <div>
-                    <p style={{ color: '#fff', fontSize: '13px', fontWeight: '500', letterSpacing: '0.05em' }}>{product.name}</p>
-                    <p style={{ color: '#555', fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', marginTop: '4px' }}>{product.color}</p>
+                    <p className="text-white text-sm font-medium tracking-wide">{product.name}</p>
+                    <p className="text-gray-600 text-[11px] tracking-widest uppercase mt-1">{product.color}</p>
                   </div>
-                  <p style={{ color: '#fff', fontSize: '13px', fontWeight: '700' }}>{product.price}</p>
+                  <p className="text-white text-sm font-bold">{product.price}</p>
                 </div>
               </div>
             </div>
@@ -117,12 +97,8 @@ export default function Products() {
         </div>
 
         {/* View All */}
-        <div style={{ textAlign: 'center', marginTop: '60px' }}>
-          <button style={{
-            border: '1px solid #333', color: '#555', background: 'none',
-            fontSize: '11px', letterSpacing: '0.4em', textTransform: 'uppercase',
-            padding: '16px 48px', cursor: 'pointer', transition: 'all 0.3s',
-          }}>
+        <div className="text-center mt-12 md:mt-16">
+          <button className="border border-zinc-800 text-gray-500 hover:border-white hover:text-white text-[11px] tracking-[0.4em] uppercase px-10 md:px-12 py-4 transition-all duration-300">
             View Full Collection
           </button>
         </div>

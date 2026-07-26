@@ -12,43 +12,35 @@ export default function Newsletter() {
   }
 
   return (
-    <section style={{ background: '#0a0a0a', padding: '120px 0', borderTop: '1px solid #111' }}>
-      <div style={{ maxWidth: '600px', margin: '0 auto', padding: '0 48px', textAlign: 'center' }}>
-        <p style={{ fontSize: '11px', letterSpacing: '0.5em', color: '#444', textTransform: 'uppercase', marginBottom: '20px' }}>
+    <section className="py-24 md:py-32 bg-black border-t border-zinc-900">
+      <div className="max-w-xl mx-auto px-6 md:px-12 text-center">
+        <p className="text-[10px] tracking-[0.5em] text-gray-600 uppercase mb-4">
           Stay in the loop
         </p>
-        <h2 style={{ fontSize: '40px', fontWeight: '900', color: '#fff', letterSpacing: '-1px', marginBottom: '12px' }}>
+        <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight mb-3">
           First to the drop.
         </h2>
-        <p style={{ fontSize: '14px', color: '#555', lineHeight: '1.8', marginBottom: '40px' }}>
+        <p className="text-sm text-gray-600 leading-relaxed mb-10">
           Sign up and get early access to new drops, exclusive discounts, and KSSD news before anyone else.
         </p>
 
         {submitted ? (
-          <div style={{ padding: '24px', border: '1px solid #222', color: '#888', fontSize: '13px', letterSpacing: '0.2em' }}>
+          <div className="border border-zinc-800 text-gray-500 text-[11px] tracking-[0.3em] uppercase py-5">
             YOU'RE ON THE LIST ✓
           </div>
         ) : (
-          <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '0' }}>
+          <form onSubmit={handleSubmit} className="flex">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your@email.com"
               required
-              style={{
-                flex: 1, background: '#111', border: '1px solid #222',
-                borderRight: 'none', color: '#fff', padding: '16px 20px',
-                fontSize: '13px', outline: 'none', letterSpacing: '0.05em',
-              }}
+              className="flex-1 bg-zinc-950 border border-zinc-800 border-r-0 text-white text-sm px-5 py-4 outline-none placeholder-zinc-700 focus:border-zinc-600 transition-colors"
             />
             <button
               type="submit"
-              style={{
-                background: '#fff', color: '#000', border: 'none',
-                padding: '16px 28px', fontSize: '11px', letterSpacing: '0.3em',
-                textTransform: 'uppercase', fontWeight: '700', cursor: 'pointer',
-              }}
+              className="bg-white text-black text-[11px] tracking-[0.3em] uppercase font-bold px-6 md:px-8 py-4 hover:bg-gray-200 transition-colors whitespace-nowrap"
             >
               Join
             </button>
