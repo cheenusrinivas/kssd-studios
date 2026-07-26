@@ -6,8 +6,8 @@ export default function Footer() {
   const followLinks = ['@kssd_studios', 'Instagram', 'TikTok']
 
   return (
-    <footer className="bg-black border-t border-zinc-900 pt-16 pb-8">
-      <div className="max-w-6xl mx-auto px-6 md:px-12">
+    <footer className="bg-black border-t border-zinc-900 pt-16 pb-8 overflow-hidden">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16">
 
         {/* Top row */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">

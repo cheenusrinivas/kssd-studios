@@ -7,7 +7,7 @@ export default function Lookbook() {
     ]
   
     return (
-      <section id="lookbook" className="py-24 md:py-40 bg-black">
+        <section id="lookbook" className="py-24 md:py-40 bg-black border-t border-zinc-900">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
   
           {/* Header */}
